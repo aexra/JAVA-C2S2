@@ -4,6 +4,6 @@ import CoreClasses.LabManager;
 public class Program {
     public static void main(String[] args) throws Exception {
         cls();
-        LabManager.init();
+        LabManager.getInstance().run(2);
     }
 }
