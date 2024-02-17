@@ -1,6 +1,6 @@
-package CoreClasses;
+package Core;
 
-import static CoreClasses.Logger.*;
+import static Core.Logger.*;
 
 import java.awt.Desktop.Action;
 

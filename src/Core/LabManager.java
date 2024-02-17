@@ -1,9 +1,9 @@
-package CoreClasses;
+package Core;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-import static CoreClasses.Logger.*;
+import static Core.Logger.*;
 import static Helpers.ConsoleHelper.*;
 
 public class LabManager {

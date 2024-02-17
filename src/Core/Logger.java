@@ -1,4 +1,4 @@
-package CoreClasses;
+package Core;
 
 public class Logger {
     public static final void log(String msg) {
