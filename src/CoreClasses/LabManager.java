@@ -1,12 +1,14 @@
 package CoreClasses;
 
 import java.util.Dictionary;
-import java.util.Set;
+import java.util.Hashtable;
+
+import static CoreClasses.Logger.*;
 
 public class LabManager {
     private static LabManager INSTANCE = null;
     private static final String labsPackageName = "Labs";
-    private static Dictionary<String, Lab> labs;
+    private static Dictionary<Integer, Class<?>> labs = new Hashtable<>();
 
     private LabManager() throws Exception {    
         INSTANCE = this;
@@ -14,9 +16,7 @@ public class LabManager {
     }
     private final void init() throws Exception {
         ClassAccessor.getClassesFromPackage(labsPackageName).forEach(cls -> {
-            try {
-                System.out.println(cls.getDeclaredConstructor().newInstance());
-            } catch (Exception ex) {}
+            labs.put(Integer.parseInt(cls.getName().replace("Labs.Lab", "")), cls);
         });
     }
 
@@ -24,10 +24,20 @@ public class LabManager {
         return INSTANCE != null? INSTANCE : new LabManager();
     }
 
-    public final void run(int lab) throws Exception {
-
+    public final void run(int ilab) throws Exception {
+        try {
+            Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
+            lab.run();
+        } catch (Exception ex) {
+            error("Не найдено лабы с индексом " + Integer.toString(ilab));
+        }
     }
-    public final void run(int lab, int task) throws Exception {
-
+    public final void run(int ilab, int itask) throws Exception {
+        try {
+            Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
+            lab.run(itask);
+        } catch (Exception ex) {
+            error("Не найдено лабы с индексом " + Integer.toString(ilab));
+        }
     }
 }
