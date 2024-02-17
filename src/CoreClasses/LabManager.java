@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class LabManager {
     private static LabManager INSTANCE = null;
-    private static final String labsFolder = "src/Labs/";
+    private static final String labsPackageName = "Labs";
     private static Dictionary<String, Lab> labs;
 
     private LabManager() throws Exception {    
@@ -13,8 +13,10 @@ public class LabManager {
         init();
     }
     private final void init() throws Exception {
-        ClassAccessor.findAllClassesUsingClassLoader("Labs").forEach(cls -> {
-            System.out.println(cls);
+        ClassAccessor.getClassesFromPackage(labsPackageName).forEach(cls -> {
+            try {
+                System.out.println(cls.getDeclaredConstructor().newInstance());
+            } catch (Exception ex) {}
         });
     }
 
