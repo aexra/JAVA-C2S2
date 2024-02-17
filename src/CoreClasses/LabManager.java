@@ -4,6 +4,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 import static CoreClasses.Logger.*;
+import static Helpers.ConsoleHelper.*;
 
 public class LabManager {
     private static LabManager INSTANCE = null;
@@ -25,6 +26,7 @@ public class LabManager {
     }
 
     public final void run(int ilab) throws Exception {
+        cls();
         try {
             Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
             lab.run();
@@ -33,6 +35,7 @@ public class LabManager {
         }
     }
     public final void run(int ilab, int itask) throws Exception {
+        cls();
         try {
             Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
             lab.run(itask);

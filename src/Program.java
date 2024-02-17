@@ -3,7 +3,6 @@ import CoreClasses.LabManager;
 
 public class Program {
     public static void main(String[] args) throws Exception {
-        cls();
         LabManager.getInstance().run(2);
     }
 }
