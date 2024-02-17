@@ -1,4 +1,3 @@
-import static Helpers.ConsoleHelper.*;
 import CoreClasses.LabManager;
 
 public class Program {
