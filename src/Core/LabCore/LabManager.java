@@ -1,10 +1,12 @@
-package Core;
+package Core.LabCore;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-import static Core.Logger.*;
+import Core.ClassManagement.ClassAccessor;
+
 import static Helpers.ConsoleHelper.*;
+import static Helpers.Logger.*;
 
 public class LabManager {
     private static LabManager INSTANCE = null;

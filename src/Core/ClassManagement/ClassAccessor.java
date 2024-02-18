@@ -1,4 +1,4 @@
-package Core;
+package Core.ClassManagement;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

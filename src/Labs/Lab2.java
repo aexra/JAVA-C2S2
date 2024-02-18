@@ -1,6 +1,6 @@
 package Labs;
 
-import Core.Lab;
+import Core.LabCore.Lab;
 
 public class Lab2 extends Lab {
     

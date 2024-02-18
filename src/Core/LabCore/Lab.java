@@ -1,13 +1,15 @@
-package Core;
+package Core.LabCore;
 
-import static Core.Logger.*;
+import static Helpers.Logger.*;
+
+import Core.Interfaces.Invokable;
 
 public abstract class Lab {
-    protected Invokable[] tasks;
+    protected Invokable[] tasks = new Invokable[]{};
 
     public final void run() {
         if (tasks.length == 0)
-            warning("Запущено задание нереализованной лабы!");
+            warning("Запущена нереализованная лаба!");
         else {
             for (Invokable task : tasks) {
                 task.Invoke();

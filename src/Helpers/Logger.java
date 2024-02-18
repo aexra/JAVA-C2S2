@@ -1,4 +1,4 @@
-package Core;
+package Helpers;
 
 public class Logger {
     public static final void log(String msg) {

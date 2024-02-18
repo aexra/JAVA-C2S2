@@ -1,4 +1,4 @@
-package Core;
+package Core.Interfaces;
 
 @FunctionalInterface
 public interface Invokable {

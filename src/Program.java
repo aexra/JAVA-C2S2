@@ -1,4 +1,4 @@
-import Core.LabManager;
+import Core.LabCore.LabManager;
 
 public class Program {
     public static void main(String[] args) throws Exception {
