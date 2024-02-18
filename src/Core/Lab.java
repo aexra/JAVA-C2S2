@@ -2,15 +2,23 @@ package Core;
 
 import static Core.Logger.*;
 
-import java.awt.Desktop.Action;
-
 public abstract class Lab {
-    protected Action[] tasks;
+    protected Invokable[] tasks;
 
     public final void run() {
-        warning("Запущена нереализованная лаба!");
+        if (tasks.length == 0)
+            warning("Запущено задание нереализованной лабы!");
+        else {
+            for (Invokable task : tasks) {
+                task.Invoke();
+            }
+        }
     }
     public final void run(int itask) {
-        warning("Запущено задание нереализованной лабы!");
+        if (tasks.length == 0)
+            warning("Запущено задание нереализованной лабы!");
+        else {
+            tasks[itask-1].Invoke();
+        }
     }
 }
