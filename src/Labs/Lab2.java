@@ -80,6 +80,25 @@ public class Lab2 extends Lab {
     public void t8() {
         log("Всё посмотрел, всё понял!");
     }
+    public void t9() {
+        String s1 = "abcabcabc";
+        String s2 = "abc";
+
+        int count = 0;
+        int lastIndex = -s2.length()-1;
+        while (true) {
+            try {
+                lastIndex = (s1.substring(lastIndex + s2.length() + 1)).indexOf(s2);
+                if (lastIndex != -1) count++;
+                else break;
+            }
+            catch (Exception ex) {
+                break;
+            }
+        }
+
+        log("Число вхождений: " + count);
+    }
 
     private void drawSymbolicTable(int start, int rows, int cols) {
         final String marks = "abcdefghijklmnopqrstuvwxyz";
