@@ -63,6 +63,20 @@ public class Lab2 extends Lab {
         log("", "");
         drawSymbolicTable(0x20a0, 2, 16);
     } 
+    public void t7() {
+        String s = "sTRingXLt18VI_a";
+        String arabic = "IVXLCDM";
+        
+        log("Строка: " + s);
+        log("Буквы: " + s.chars().filter(Character::isAlphabetic).count());
+        log("Строчных: " + s.chars().filter(Character::isUpperCase).count());
+        log("Прописных: " + s.chars().filter(Character::isLowerCase).count());
+        log("Цифр: " + (s.chars().filter(Character::isDigit).count() + s.chars().filter(ch -> arabic.indexOf(ch) != -1).count()));
+        log("Арабских: " + s.chars().filter(Character::isDigit).count());
+        log("Не арабских: " + s.chars().filter(ch -> arabic.indexOf(ch) != -1).count());
+        log("Другие символы: " + (s.length() - s.chars().filter(Character::isAlphabetic).count() - s.chars().filter(Character::isDigit).count()));
+        log("Символов: " + s.length());
+    }
 
 
     private void drawSymbolicTable(int start, int rows, int cols) {
