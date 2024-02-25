@@ -7,17 +7,30 @@ import java.lang.reflect.Method;
 
 public abstract class Lab {
     protected TreeMap<Integer, Method> tasks = new TreeMap<>();
-    protected String[] args;
+    protected String[] args = new String[]{};
 
     public Lab() {
         init();
     }
-    public Lab(String[] args) {
-        this.args = args;
-        init();
-    }
 
     public final void run() {
+        if (tasks.size() == 0)
+            warning("Запущена нереализованная лаба!");
+        else {
+            tasks.values().forEach((m) -> {
+                try {
+                    log("Задание №" + m.getName().substring(1) + '\n', "[INFO\t] ");
+                    m.invoke(this);
+                }
+                catch (Exception ex) {
+                    error("Method <" + m.getName() + "> cannot be invoked");
+                }
+                log("\n\n", "");
+            });
+        }
+    }
+    public final void run(String[] args) {
+        this.args = args;
         if (tasks.size() == 0)
             warning("Запущена нереализованная лаба!");
         else {
@@ -38,6 +51,21 @@ public abstract class Lab {
             warning("Запущено задание нереализованной лабы!");
         else {
             try {
+                log("Задание №" + tasks.get(itask).getName().substring(1) + '\n', "[INFO\t] ");
+                tasks.get(itask).invoke(this);
+            }
+            catch (Exception ex) {
+                error("Method <" + tasks.get(itask).getName() + "> cannot be invoked");
+            }
+        }
+    }
+    public final void run(int itask, String[] args) {
+        this.args = args;
+        if (tasks.size() == 0)
+            warning("Запущено задание нереализованной лабы!");
+        else {
+            try {
+                log("Задание №" + tasks.get(itask).getName().substring(1) + '\n', "[INFO\t] ");
                 tasks.get(itask).invoke(this);
             }
             catch (Exception ex) {

@@ -19,15 +19,12 @@ public class Program {
                     );
                     break;
 
-                case 3:
+                default:
                     LabManager.getInstance().run(
                         Integer.parseInt(args[0]),
                         Integer.parseInt(args[1]),
                         Arrays.copyOfRange(args, 2, args.length)
                     );
-                    break;
-
-                default:
                     break;
             }
                 
