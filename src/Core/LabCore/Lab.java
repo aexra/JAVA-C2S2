@@ -7,73 +7,10 @@ import java.lang.reflect.Method;
 
 public abstract class Lab {
     protected TreeMap<Integer, Method> tasks = new TreeMap<>();
-    protected String[] args = new String[]{};
 
     public Lab() {
         init();
     }
-
-    public final void run() {
-        if (tasks.size() == 0)
-            warning("Запущена нереализованная лаба!");
-        else {
-            tasks.values().forEach((m) -> {
-                try {
-                    log("Задание №" + m.getName().substring(1) + '\n', "[INFO\t] ");
-                    m.invoke(this);
-                }
-                catch (Exception ex) {
-                    error("Method <" + m.getName() + "> cannot be invoked");
-                }
-                log("\n\n", "");
-            });
-        }
-    }
-    public final void run(String[] args) {
-        this.args = args;
-        if (tasks.size() == 0)
-            warning("Запущена нереализованная лаба!");
-        else {
-            tasks.values().forEach((m) -> {
-                try {
-                    log("Задание №" + m.getName().substring(1) + '\n', "[INFO\t] ");
-                    m.invoke(this);
-                }
-                catch (Exception ex) {
-                    error("Method <" + m.getName() + "> cannot be invoked");
-                }
-                log("\n\n", "");
-            });
-        }
-    }
-    public final void run(int itask) {
-        if (tasks.size() == 0)
-            warning("Запущено задание нереализованной лабы!");
-        else {
-            try {
-                log("Задание №" + tasks.get(itask).getName().substring(1) + '\n', "[INFO\t] ");
-                tasks.get(itask).invoke(this);
-            }
-            catch (Exception ex) {
-                error("Method <" + tasks.get(itask).getName() + "> cannot be invoked");
-            }
-        }
-    }
-    public final void run(int itask, String[] args) {
-        this.args = args;
-        if (tasks.size() == 0)
-            warning("Запущено задание нереализованной лабы!");
-        else {
-            try {
-                log("Задание №" + tasks.get(itask).getName().substring(1) + '\n', "[INFO\t] ");
-                tasks.get(itask).invoke(this);
-            }
-            catch (Exception ex) {
-                error("Method <" + tasks.get(itask).getName() + "> cannot be invoked");
-            }
-        }
-    }
-
     private final void init() {
         fillTasksArray();
     }
@@ -89,6 +26,51 @@ public abstract class Lab {
                 }
                 tasks.put(a, m);
             }
+        }
+    }
+
+    public final void run() {
+        _run(0, null);
+    }
+    public final void run(String[] args) {
+        _run(0, args);
+    }
+    public final void run(int itask) {
+        _run(itask, null);
+    }
+    public final void run(int itask, String[] args) {
+        _run(itask, args);
+    }
+
+    private final void _run(int itask, String[] args) {
+        if (itask == 0) {
+            tasks.forEach((k, e) -> {
+                _invokeTask(k, args);
+            });
+        } else {
+            _invokeTask(itask, args);
+        }
+    }
+    private final void _invokeTask(int itask, String[] args) {
+        // Получает конструктор метода если он существует, иначе конец
+        Method m;
+        try {
+            m = tasks.get(itask);
+        }
+        catch (Exception ex) {
+            error("Задание <" + itask + "> не существует");
+            return;
+        }
+
+        // Вывод сообщения [INFO   ] Задание №...
+        log("Задание №" + m.getName().substring(1) + '\n', "[INFO\t] ");
+
+        // Вызов метода задания
+        try {
+            m.invoke(this, (Object[])args);
+        }
+        catch (Exception ex) {
+
         }
     }
 }
