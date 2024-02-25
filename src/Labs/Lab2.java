@@ -39,7 +39,16 @@ public class Lab2 extends Lab {
         else if (targetDistance < r) log("Тревога");
         else log("Объект обнаружен");
     }
-    public void t4() {
-        
+    public void t4(String s_R, String s_r, String s_targetX, String s_targetY) {
+        int R = Integer.parseInt(s_R);
+        int r = Integer.parseInt(s_r);
+
+        int targetX = Integer.parseInt(s_targetX);
+        int targetY = Integer.parseInt(s_targetY);
+        double targetDistance = Math.sqrt(targetX*targetX + targetY*targetY);
+
+        if (targetDistance > R) log("Объект не обнаружен");
+        else if (targetDistance < r) log("Тревога");
+        else log("Объект обнаружен");
     }
 }
