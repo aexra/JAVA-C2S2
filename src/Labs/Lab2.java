@@ -57,4 +57,13 @@ public class Lab2 extends Lab {
         log("8-я:\t" + Integer.toString(Integer.parseInt(number), 8));
         log("16-я:\t" + Integer.toString(Integer.parseInt(number), 16));
     }
+    public void t6() {
+        drawSymbolicTable(0x0400, 16, 16);
+        drawSymbolicTable(0x20a0, 2, 16);
+    }
+
+
+    private void drawSymbolicTable(int start, int rows, int cols) {
+        log((char)start);
+    }
 }
