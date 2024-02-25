@@ -39,10 +39,10 @@ public abstract class Lab {
         }
     }
 
-    private void init() {
+    private final void init() {
         fillTasksArray();
     }
-    private void fillTasksArray() {
+    private final void fillTasksArray() {
         for (Method m : this.getClass().getDeclaredMethods()) {
             if (m.getName().charAt(0) == 't') {
                 int a;
