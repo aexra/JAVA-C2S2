@@ -18,6 +18,7 @@ public abstract class Lab {
         else {
             tasks.values().forEach((m) -> {
                 try {
+                    log("Задание №" + m.getName().substring(1) + '\n', "[INFO\t] ");
                     m.invoke(this);
                 }
                 catch (Exception ex) {
