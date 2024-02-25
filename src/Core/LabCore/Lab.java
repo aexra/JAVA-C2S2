@@ -2,6 +2,7 @@ package Core.LabCore;
 
 import static Helpers.Logger.*;
 
+import java.util.Arrays;
 import java.util.TreeMap;
 import java.lang.reflect.Method;
 
@@ -44,14 +45,15 @@ public abstract class Lab {
 
     private final void _run(int itask, String[] args) {
         if (itask == 0) {
-            tasks.forEach((k, e) -> {
-                _invokeTask(k, args);
-            });
+            int argsCounter = 0;
+            for (var k : tasks.keySet()) {
+                argsCounter += _invokeTask(k, Arrays.copyOfRange(args, argsCounter, args.length));
+            }
         } else {
             _invokeTask(itask, args);
         }
     }
-    private final void _invokeTask(int itask, String[] args) {
+    private final int _invokeTask(int itask, String[] args) {
         // Получает конструктор метода если он существует, иначе конец
         Method m;
         try {
@@ -59,24 +61,31 @@ public abstract class Lab {
         }
         catch (Exception ex) {
             error("Задание <" + itask + "> не существует");
-            return;
+            return 0;
         }
 
         // Вывод сообщения [INFO   ] Задание №...
         log("Задание №" + m.getName().substring(1) + '\n', "[INFO\t] ");
 
         // Вызов метода задания
+        int usedArgs = 0;
         try {
             if (m.getParameterCount() == 0) m.invoke(this);
-            else m.invoke(this, (Object[])args);
+            else {
+                usedArgs = m.getParameterCount();
+                m.invoke(this, (Object[])args);
+            }
         }
         catch (Exception ex) {
             error("Метод задания <" + itask + "> не может быть вызван");
             error(ex);
-            return;
+            return usedArgs;
         }
 
         // Вывод пустой строки между заданиями
         log("\n\n", "");
+
+        // Возвращаем кол-во использованных аргументов
+        return usedArgs;
     }
 }
