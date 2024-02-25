@@ -36,8 +36,34 @@ public class LabManager {
             error("Не найдено лабы с индексом " + Integer.toString(ilab));
         }
     }
+    public final void run(int ilab, String[] args) throws Exception {
+        cls();
+        try {
+            Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
+            lab.run();
+        } catch (Exception ex) {
+            error("Не найдено лабы с индексом " + Integer.toString(ilab));
+        }
+    }
     public final void run(int ilab, int itask) throws Exception {
         cls();
+        if (itask == 0) {
+            run(ilab);
+            return;
+        }
+        try {
+            Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
+            lab.run(itask);
+        } catch (Exception ex) {
+            error("Не найдено лабы с индексом " + Integer.toString(ilab));
+        }
+    }
+    public final void run(int ilab, int itask, String[] args) throws Exception {
+        cls();
+        if (itask == 0) {
+            run(ilab, args);
+            return;
+        }
         try {
             Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
             lab.run(itask);
