@@ -39,7 +39,7 @@ public class LabManager {
     public final void run(int ilab, String[] args) throws Exception {
         cls();
         try {
-            Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
+            Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance(args);
             lab.run();
         } catch (Exception ex) {
             error("Не найдено лабы с индексом " + Integer.toString(ilab));

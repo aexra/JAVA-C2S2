@@ -6,9 +6,14 @@ import java.util.TreeMap;
 import java.lang.reflect.Method;
 
 public abstract class Lab {
-    protected static TreeMap<Integer, Method> tasks = new TreeMap<>();
+    protected TreeMap<Integer, Method> tasks = new TreeMap<>();
+    protected String[] args;
 
     public Lab() {
+        init();
+    }
+    public Lab(String[] args) {
+        this.args = args;
         init();
     }
 
