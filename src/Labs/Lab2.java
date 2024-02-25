@@ -59,8 +59,10 @@ public class Lab2 extends Lab {
     }
     public void t6() {
         drawSymbolicTable(0x0400, 16, 16);
-        // drawSymbolicTable(0x20a0, 2, 16);
-    }
+        log("", "");
+        log("", "");
+        drawSymbolicTable(0x20a0, 2, 16);
+    } 
 
 
     private void drawSymbolicTable(int start, int rows, int cols) {
@@ -77,8 +79,14 @@ public class Lab2 extends Lab {
         log("\t" + title, "", false);
 
         System.out.println();
+
+        int code = start;
         for (int i = 0; i < rows; i++) {
-            log(i, "", false);
+            log(Integer.toString(i) + "\t", "", false);
+            for (int j = 0; j < cols; j++) {
+                log((char)code, "", false);
+                code++;
+            }
             System.out.println();
         }
     }
