@@ -104,6 +104,9 @@ public class Lab2 extends Lab {
 
         log("Число вхождений: " + count);
     }
+    public void t10() {
+        String s = "abcd";
+    }
 
     private void drawSymbolicTable(int start, int rows, int cols) {
         final String marks = "abcdefghijklmnopqrstuvwxyz";
