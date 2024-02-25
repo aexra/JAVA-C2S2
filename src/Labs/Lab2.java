@@ -52,6 +52,9 @@ public class Lab2 extends Lab {
         else log("Объект обнаружен");
     }
     public void t5(String number) {
-        log(number);
+        log("10-я:\t" + number);
+        log("2-я:\t" + Integer.toString(Integer.parseInt(number), 2));
+        log("8-я:\t" + Integer.toString(Integer.parseInt(number), 8));
+        log("16-я:\t" + Integer.toString(Integer.parseInt(number), 16));
     }
 }
