@@ -77,7 +77,9 @@ public class Lab2 extends Lab {
         log("Другие символы: " + (s.length() - s.chars().filter(Character::isAlphabetic).count() - s.chars().filter(Character::isDigit).count()));
         log("Символов: " + s.length());
     }
-
+    public void t8() {
+        log("Всё посмотрел, всё понял!");
+    }
 
     private void drawSymbolicTable(int start, int rows, int cols) {
         final String marks = "abcdefghijklmnopqrstuvwxyz";
