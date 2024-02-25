@@ -23,6 +23,7 @@ public abstract class Lab {
                 catch (Exception ex) {
                     error("Method <" + m.getName() + "> cannot be invoked");
                 }
+                log("\n\n", "");
             });
         }
     }
