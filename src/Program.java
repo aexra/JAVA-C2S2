@@ -1,9 +1,11 @@
-import java.util.Arrays;
+import static Helpers.ConsoleHelper.cls;
 
+import java.util.Arrays;
 import Core.LabCore.LabManager;
 
 public class Program {
     public static void main(String[] args) throws Exception {
+        cls();
         switch (args.length) {
             case 0:
                 LabManager.getInstance().run(2);

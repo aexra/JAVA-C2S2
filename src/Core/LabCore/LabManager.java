@@ -28,47 +28,37 @@ public class LabManager {
     }
 
     public final void run(int ilab) throws Exception {
-        cls();
-        try {
-            Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
-            lab.run();
-        } catch (Exception ex) {
-            error("Не найдено лабы с индексом " + Integer.toString(ilab));
-        }
+        _run(ilab, 0, null);
     }
     public final void run(int ilab, String[] args) throws Exception {
-        cls();
-        try {
-            Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
-            lab.run(args);
-        } catch (Exception ex) {
-            error("Не найдено лабы с индексом " + Integer.toString(ilab));
-        }
+        _run(ilab, 0, args);
     }
     public final void run(int ilab, int itask) throws Exception {
-        cls();
-        if (itask == 0) {
-            run(ilab);
-            return;
-        }
-        try {
-            Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
-            lab.run(itask);
-        } catch (Exception ex) {
-            error("Не найдено лабы с индексом " + Integer.toString(ilab));
-        }
+        _run(ilab, itask, null);
     }
     public final void run(int ilab, int itask, String[] args) throws Exception {
-        cls();
-        if (itask == 0) {
-            run(ilab, args);
+        _run(ilab, itask, args);
+    }
+
+    private final void _run(int ilab, int itask, String[] args) throws Exception {
+
+        // Создает экземпляр лабы если она существует, иначе конец
+        Lab lab;
+        try {
+            lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
+        }
+        catch (Exception ex) {
+            error("Не найдено лабы с индексом " + Integer.toString(ilab));
             return;
         }
-        try {
-            Lab lab = (Lab)labs.get(ilab).getDeclaredConstructor().newInstance();
-            lab.run(itask, args);
-        } catch (Exception ex) {
-            error("Не найдено лабы с индексом " + Integer.toString(ilab));
+
+        // Если номер задания 0, то нужно вызвать все задачи лабы
+        if (itask == 0) {
+            lab.run(args);
+            return;
         }
+
+        // Иначе вызвать конкретную
+        lab.run(itask, args);
     }
 }
