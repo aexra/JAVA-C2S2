@@ -27,4 +27,16 @@ public class Lab2 extends Lab {
         }
         log("Среднее геометрическое: " + Integer.toString(sum / count));
     }
+    public void t3() {
+        int R = 500;
+        int r = 50;
+
+        int targetX = 5;
+        int targetY = 5;
+        double targetDistance = Math.sqrt(targetX*targetX + targetY*targetY);
+
+        if (targetDistance > R) log("Объект не обнаружен");
+        else if (targetDistance < r) log("Тревога");
+        else log("Объект обнаружен");
+    }
 }
