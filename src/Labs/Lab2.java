@@ -81,16 +81,21 @@ public class Lab2 extends Lab {
         log("Всё посмотрел, всё понял!");
     }
     public void t9() {
-        String s1 = "abcabcabc";
-        String s2 = "abc";
+        String s1 = "aaa";
+        String s2 = "a";
 
         int count = 0;
-        int lastIndex = -s2.length()-1;
+        int lastIndex = -1;
+        int lastD = 0;
+
         while (true) {
             try {
-                lastIndex = (s1.substring(lastIndex + s2.length() + 1)).indexOf(s2);
-                if (lastIndex != -1) count++;
-                else break;
+                if ((lastD = (s1.substring(lastIndex += 1)).indexOf(s2)) != -1) {
+                    count++;
+                    lastIndex += lastD;
+                } else {
+                    break;
+                }
             }
             catch (Exception ex) {
                 break;
