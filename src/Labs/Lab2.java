@@ -39,7 +39,7 @@ public class Lab2 extends Lab {
         else if (targetDistance < r) log("Тревога");
         else log("Объект обнаружен");
     }
-    public void t4() {
-        
+    public void t4(String a) {
+        log(a);
     }
 }

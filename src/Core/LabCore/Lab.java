@@ -67,10 +67,16 @@ public abstract class Lab {
 
         // Вызов метода задания
         try {
-            m.invoke(this, (Object[])args);
+            if (m.getParameterCount() == 0) m.invoke(this);
+            else m.invoke(this, (Object[])args);
         }
         catch (Exception ex) {
-
+            error("Метод задания <" + itask + "> не может быть вызван");
+            error(ex);
+            return;
         }
+
+        // Вывод пустой строки между заданиями
+        log("\n\n", "");
     }
 }
