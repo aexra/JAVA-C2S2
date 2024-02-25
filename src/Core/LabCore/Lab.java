@@ -6,7 +6,6 @@ import java.util.TreeMap;
 import java.lang.reflect.Method;
 
 public abstract class Lab {
-    // protected static Dictionary<Integer, Method> tasks = new Hashtable<>();
     protected static TreeMap<Integer, Method> tasks = new TreeMap<>();
 
     public Lab() {
