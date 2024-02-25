@@ -2,25 +2,59 @@ package Core.LabCore;
 
 import static Helpers.Logger.*;
 
-import Core.Interfaces.Invokable;
+import java.util.TreeMap;
+import java.lang.reflect.Method;
 
 public abstract class Lab {
-    protected Invokable[] tasks = new Invokable[]{};
+    // protected static Dictionary<Integer, Method> tasks = new Hashtable<>();
+    protected static TreeMap<Integer, Method> tasks = new TreeMap<>();
+
+    public Lab() {
+        init();
+    }
 
     public final void run() {
-        if (tasks.length == 0)
+        if (tasks.size() == 0)
             warning("Запущена нереализованная лаба!");
         else {
-            for (Invokable task : tasks) {
-                task.Invoke();
-            }
+            tasks.values().forEach((m) -> {
+                try {
+                    m.invoke(this);
+                }
+                catch (Exception ex) {
+                    error("Method <" + m.getName() + "> cannot be invoked");
+                }
+            });
         }
     }
     public final void run(int itask) {
-        if (tasks.length == 0)
+        if (tasks.size() == 0)
             warning("Запущено задание нереализованной лабы!");
         else {
-            tasks[itask-1].Invoke();
+            try {
+                tasks.get(itask).invoke(this);
+            }
+            catch (Exception ex) {
+                error("Method <" + tasks.get(itask).getName() + "> cannot be invoked");
+            }
+        }
+    }
+
+    private void init() {
+        fillTasksArray();
+    }
+    private void fillTasksArray() {
+        for (Method m : this.getClass().getDeclaredMethods()) {
+            if (m.getName().charAt(0) == 't') {
+                int a;
+                try {
+                    a = Integer.parseUnsignedInt(m.getName().substring(1)); 
+                }
+                catch (NumberFormatException ex) {
+                    continue;
+                }
+                tasks.put(a, m);
+            }
         }
     }
 }
