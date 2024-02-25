@@ -47,13 +47,15 @@ public abstract class Lab {
         if (itask == 0) {
             int argsCounter = 0;
             for (var k : tasks.keySet()) {
-                argsCounter += _invokeTask(k, Arrays.copyOfRange(args, argsCounter, args.length));
+                int argsUsed = tasks.get(k).getParameterCount();
+                _invokeTask(k, Arrays.copyOfRange(args, argsCounter, argsCounter + argsUsed));
+                argsCounter += argsUsed;
             }
         } else {
             _invokeTask(itask, args);
         }
     }
-    private final int _invokeTask(int itask, String[] args) {
+    private final void _invokeTask(int itask, String[] args) {
         // Получает конструктор метода если он существует, иначе конец
         Method m;
         try {
@@ -61,31 +63,25 @@ public abstract class Lab {
         }
         catch (Exception ex) {
             error("Задание <" + itask + "> не существует");
-            return 0;
+            return;
         }
 
         // Вывод сообщения [INFO   ] Задание №...
         log("Задание №" + m.getName().substring(1) + '\n', "[INFO\t] ");
 
         // Вызов метода задания
-        int usedArgs = 0;
         try {
             if (m.getParameterCount() == 0) m.invoke(this);
             else {
-                usedArgs = m.getParameterCount();
                 m.invoke(this, (Object[])args);
             }
         }
         catch (Exception ex) {
             error("Метод задания <" + itask + "> не может быть вызван");
             error(ex);
-            return usedArgs;
         }
 
         // Вывод пустой строки между заданиями
         log("\n\n", "");
-
-        // Возвращаем кол-во использованных аргументов
-        return usedArgs;
     }
 }
