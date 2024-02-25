@@ -5,7 +5,6 @@ import java.util.Hashtable;
 
 import Core.ClassManagement.ClassAccessor;
 
-import static Helpers.ConsoleHelper.*;
 import static Helpers.Logger.*;
 
 public class LabManager {
