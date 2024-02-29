@@ -104,8 +104,17 @@ public class Lab2 extends Lab {
 
         log("Число вхождений: " + count);
     }
-    public void t10() {
-        String s = "abcd";
+    public void t10(String s) {
+        log("Все циклические перестановки строки <" + s + ">");
+
+        log("1. " + s);
+
+        for (int i = 0; i < s.length() - 1; i++) {
+            char tmp = s.charAt(0);
+            s = s.substring(1) + tmp;
+
+            log(String.valueOf(i+2) + ". " + s);
+        }
     }
 
     private void drawSymbolicTable(int start, int rows, int cols) {
