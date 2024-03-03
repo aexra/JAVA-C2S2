@@ -1,7 +1,8 @@
 import static Helpers.ConsoleHelper.cls;
 
 import java.util.Arrays;
-import Core.LabCore.LabManager;
+
+import Core.LabManagement.LabManager;
 
 public class Program {
     public static void main(String[] args) throws Exception {

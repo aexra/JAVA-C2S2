@@ -1,4 +1,4 @@
-package Core.LabCore;
+package Core.LabManagement;
 
 import static Helpers.Logger.*;
 

@@ -2,7 +2,7 @@ package Labs;
 
 import static Helpers.Logger.*;
 
-import Core.LabCore.Lab;
+import Core.LabManagement.Lab;
 
 public class Lab2 extends Lab {
     public void t1() {
