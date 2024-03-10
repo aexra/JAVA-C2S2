@@ -10,4 +10,11 @@ public class InputHelper {
         // scanner.close();
         return value;
     }
+    public static double inputDouble(String msg) {
+        System.out.print(msg);
+        Scanner scanner = new Scanner(System.in);
+        double value = scanner.nextDouble();
+        // scanner.close();
+        return value;
+    }
 }

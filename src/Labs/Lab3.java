@@ -4,13 +4,16 @@ import static Helpers.Logger.log;
 import static Helpers.Arrays.*;
 import static Helpers.InputHelper.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 import Core.Interfaces.ILabTask;
 import Core.LabManagement.Lab;
+import Labs.Classes.LeftRect;
 import Labs.Classes.MyUltraSuperCoolClassWithOneMethodForThisTask;
+import Labs.Classes.Regex;
 import Labs.Enums.IntersectionTypes;
 
 public class Lab3 extends Lab {
@@ -119,5 +122,106 @@ public class Lab3 extends Lab {
     @ILabTask(description = "Я скопировал 4е задание ЫЫЫ")
     public void t5() {
         t4();
+    }
+
+    @ILabTask(description = "Чё то там численное интегрирование чё то там табуляция")
+    public void t6() {
+        double MathCadSolve = 1.4682818284590449;
+        double[][] steps = LeftRect.CreateSteps(0, 1, 101);
+        double answer = LeftRect.Integrate(steps[0], steps[1]);
+        System.out.println("Интеграл через метод левых прямоугольников: " + answer);
+        System.out.println("Разница с Маткадом: +-" + Math.abs(answer - MathCadSolve));
+    }
+
+    @ILabTask
+    public void t7() {
+        int num = (int) inputInt("Введите число в 10СС: ");
+        int base = (int) inputInt("Введите СС (2-8): ");
+        System.out.printf("Мой метод - Число %d в %d-ичной СС: %d%n", num, base, ConvertTo(num, base));
+        System.out.printf("Метод toString - Число %d в %d-ичной СС: %s%n ", num, base, Integer.toString(num, base));
+    }
+
+    @ILabTask
+    public void t8() {
+        int size = inputInt("Введите число коэфициентов");
+        int alloc_size = (size > 1) ? size : size + 1;
+        int[] coefs = new int[alloc_size];
+        if (size == 1) coefs[1] = 0;
+        for (int i = 0; i < size; i++) {
+            coefs[i] = inputInt("Введите "  + (size - i - 1) + "-й коэф.: ");
+        }
+        // P = (a2 * x + a1) * x + a0
+        int x = inputInt("Введите X: ");
+        int poly = coefs[0] * x + coefs[1];
+        String stdPoly = "P = " + "(".repeat(alloc_size - 1) + coefs[0] + "x + " + coefs[1] + ")";
+        String valPoly = "P = " + "(".repeat(alloc_size - 1) + coefs[0] + " * " + x + " + " + coefs[1] + ")";
+        for (int i = 2; i < size; i++) {
+            poly = poly * x + coefs[i];
+            stdPoly += "x + " + coefs[i] + ")";
+            valPoly += " * " + x + " + " + coefs[i] + ")";
+        }
+        stdPoly += " = " + poly;
+        valPoly += " = " + poly;
+        System.out.println(stdPoly + "\n" + valPoly);
+    }
+
+    @ILabTask
+    public void t9(String fmstr) {
+        Regex ru = new Regex("Россия",
+                "((\\+7)|8)(([- ]?[0-9]{3}[- ]?)|([(][0-9]{3}[)]))([0-9]{3}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
+        Regex ro = new Regex("Ростов-на-Дону", "([2-3][- ]?)([0-9]{2}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
+        Regex[] regs = {ru, ro};
+
+        System.out.print("Введите строку: ");
+        Scanner scan = new Scanner(System.in);
+        String line = scan.nextLine();
+
+        if (Boolean.parseBoolean(fmstr)) {
+            for (Regex re : regs) {
+                if (re.MatchLine(line)) System.out.println(re.GetLabel() + ": Корректный номер");
+                else System.out.println(re.GetLabel() + ": Некорректный номер");
+            }
+        }
+        else {
+            for (Regex re : regs) {
+                if (re.InLine(line)) System.out.println(re.GetLabel() + ": Содержится в строке");
+                else System.out.println(re.GetLabel() + ": Не содержится в строке");
+            }
+        }
+        scan.close();
+    }
+
+    @ILabTask
+    public void t10() {
+        Regex ru = new Regex("Россия",
+                "((\\+7)|8)(([- ]?[0-9]{3}[- ]?)|([(][0-9]{3}[)]))([0-9]{3}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
+        Regex ro = new Regex("Ростов-на-Дону", "([2-3][- ]?)([0-9]{2}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
+
+        System.out.print("Введите строку: ");
+        Scanner scan = new Scanner(System.in);
+        // String line = scan.nextLine();
+        String line = "Мои номера 220-30-40 и 8904-378-16-61 не считая служебных";
+
+        ArrayList<String> nums = new ArrayList<>();
+        nums.addAll(ru.ExtractNums(line));
+        nums.addAll(ro.ExtractNums(line));
+
+        if(nums.size() == 0) System.out.println("В строке не найдено номеров");
+        else System.out.println("Найденные номера: " + nums.toString());
+        scan.close();
+    }
+
+    private static int ConvertTo(int dec, int base) {
+        if (dec < 0) {
+            System.out.println("Число должно быть больше или равно 0");
+            return -1;
+        }
+        if(dec == 0) return 0;
+        String result = "";
+        while (dec > 0) {
+            result = String.valueOf(dec % base) + result;
+            dec /= base;
+        }
+        return Integer.valueOf(result);
     }
 }
