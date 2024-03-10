@@ -51,6 +51,9 @@ public class LabManager {
             return;
         }
 
+        // Если аргументы вызова null, то во избежание ошибок создадим пустой массив
+        if (args == null) args = new String[0];
+
         // Если номер задания 0, то нужно вызвать все задачи лабы
         if (itask == 0) {
             lab.run(args);

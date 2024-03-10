@@ -4,6 +4,9 @@ import static Helpers.Logger.*;
 
 import java.util.Arrays;
 import java.util.TreeMap;
+
+import Core.Interfaces.ILabTask;
+
 import java.lang.reflect.Method;
 
 public abstract class Lab {
@@ -66,8 +69,9 @@ public abstract class Lab {
             return;
         }
 
-        // Вывод сообщения [INFO   ] Задание №...
-        log("Задание №" + m.getName().substring(1) + '\n', "[INFO\t] ");
+        // Вывод сообщения [INFO   ] Задание №... и описания задания если таковое есть
+        log("Задание №" + m.getName().substring(1), "[INFO\t] ");
+        log("Описание: " + m.getAnnotation(ILabTask.class).description() + "\n", "[INFO\t] ");
 
         // Вызов метода задания
         try {
