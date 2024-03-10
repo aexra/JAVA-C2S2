@@ -3,6 +3,8 @@ package Labs;
 import static Helpers.Logger.log;
 import static Helpers.Arrays.*;
 
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 import Core.Interfaces.ILabTask;
@@ -70,5 +72,32 @@ public class Lab3 extends Lab {
         }
 
         log("Максимальное отрицательное в заданном массиве: " + Integer.toString(maxNegative));
+    }
+
+    @ILabTask(description = "упорядочить по возрастанию элементы каждой строки матрицы 3x3. Вывести матрицу на экран до сортировки и после")
+    public void t3() {
+        Random rnd = new Random();
+        int [][] array = new int[3][3];
+        for (int r = 0; r < array.length; r++) {
+            for (int c = 0; c < array.length; c++) {
+                array[r][c] = rnd.nextInt(20);
+            }
+        }
+        System.out.printf("Неупорядоченный массив%n%s%n", Arrays.deepToString(array));
+        // Сортировка пузырьком
+        int temp;
+        for (int r = 0; r < array.length; r++) {
+            int n = array[r].length;
+            for (int i = 0; i < n - 1; i++) {
+                for (int j = 0; j < n - i - 1; j++) {
+                    if (array[r][j] > array[r][j+1]) {
+                        temp = array[r][j];
+                        array[r][j] = array[r][j+1];
+                        array[r][j+1] = temp;
+                    }
+                }
+            }
+        }
+        System.out.printf("Упорядоченный массив%n%s", Arrays.deepToString(array));
     }
 }
