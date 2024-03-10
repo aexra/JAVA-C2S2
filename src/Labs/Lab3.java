@@ -2,6 +2,7 @@ package Labs;
 
 import static Helpers.Logger.log;
 import static Helpers.Arrays.*;
+import static Helpers.InputHelper.*;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -9,6 +10,8 @@ import java.util.Scanner;
 
 import Core.Interfaces.ILabTask;
 import Core.LabManagement.Lab;
+import Labs.Classes.MyUltraSuperCoolClassWithOneMethodForThisTask;
+import Labs.Enums.IntersectionTypes;
 
 public class Lab3 extends Lab {
     private Scanner scanner;
@@ -99,5 +102,22 @@ public class Lab3 extends Lab {
             }
         }
         System.out.printf("Упорядоченный массив%n%s", Arrays.deepToString(array));
+    }
+
+    @ILabTask(description = "ЫЫЫ")
+    public void t4() {
+        log("Результат проверки на пересечение: " + MyUltraSuperCoolClassWithOneMethodForThisTask.MyUltraCoolMethodForThisTask(
+            inputInt("x1 = "),
+            inputInt("y1 = "), 
+            inputInt("r1 = "), 
+            inputInt("x2 = "), 
+            inputInt("y2 = "), 
+            inputInt("r2 = ")
+        ).desc);
+    }
+
+    @ILabTask(description = "Я скопировал 4е задание ЫЫЫ")
+    public void t5() {
+        t4();
     }
 }
