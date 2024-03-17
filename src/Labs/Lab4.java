@@ -6,6 +6,6 @@ import Labs.Enums.CarType;
 
 public class Lab4 extends Lab {
     public void t1() {
-        var car1 = new Car("Fasha", CarType.CARGO, "Green", 1200, 18);
+        var car1 = new Car("Fasha", CarType.TANK, "Green", 1200, 18);
     }
 }
