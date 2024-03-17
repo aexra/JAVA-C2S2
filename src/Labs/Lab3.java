@@ -64,6 +64,7 @@ public class Lab3 extends Lab {
         DrawTableInt(ary);
 
         int maxNegative = -Integer.MAX_VALUE;
+        boolean found = false;
         if (ary.length < 1) {
             log("Невозможно обработать пустой массив.");
             return;
@@ -73,11 +74,12 @@ public class Lab3 extends Lab {
             for (int col = 0; col < ary[row].length; col++) {
                 if (ary[row][col] < 0 && ary[row][col] > maxNegative) {
                     maxNegative = ary[row][col];
+                    found = true;
                 }
             }
         }
 
-        log("Максимальное отрицательное в заданном массиве: " + Integer.toString(maxNegative));
+        log("Максимальное отрицательное в заданном массиве: " + (found ? Integer.toString(maxNegative) : "НЕ НАЙДЕНО"));
     }
 
     @ILabTask(description = "упорядочить по возрастанию элементы каждой строки матрицы 3x3. Вывести матрицу на экран до сортировки и после")
@@ -143,7 +145,7 @@ public class Lab3 extends Lab {
 
     @ILabTask
     public void t8() {
-        int size = inputInt("Введите число коэфициентов");
+        int size = inputInt("Введите число коэффициентов");
         int alloc_size = (size > 1) ? size : size + 1;
         int[] coefs = new int[alloc_size];
         if (size == 1) coefs[1] = 0;
