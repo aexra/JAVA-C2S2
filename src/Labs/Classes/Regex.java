@@ -20,6 +20,9 @@ public class Regex {
     public Boolean MatchLine(String line) {
         return Pattern.matches(exp, line);
     }
+    public static boolean IsMatch(String regex, String line) {
+        return Pattern.matches(regex, line);
+    }
     public Boolean InLine(String line) {
         Matcher m = p.matcher(line);
         return m.find();
