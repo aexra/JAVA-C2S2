@@ -1,12 +1,12 @@
 package Labs.Enums;
 
 public enum IntersectionTypes {
-    NO("No intersections"),
-    ONE("One intersection"),
-    TWO("Two intersection"),
-    SAME("Circles are the same"),
-    FIS("First one nested in the second one"),
-    SIF("Second one nested in the first one");
+    NO("Нет пересечений"),
+    ONE("Одно пересечение"),
+    TWO("Два пересечения"),
+    SAME("Окружности совпадают"),
+    FIS("Первая окружность вложена во вторую"),
+    SIF("Вторая окружность вложена в первую");
 
     public String desc;
     IntersectionTypes(String desc) {
