@@ -6,8 +6,8 @@ public class Car {
     private String sign;
     private String mark;
     private CarType type;
-    private String color;
-    private int power;
+    public String color;
+    public int power;
     private int wheelsCount;
 
     private void setSign(String value) {
@@ -24,6 +24,12 @@ public class Car {
     }
     public String getSign() {
         return this.sign;
+    }
+    public String getMark() {
+        return this.mark;
+    }
+    public int getWheelsCount() {
+        return this.wheelsCount;
     }
 
     public Car(String _mark, CarType _type, String _color, int _power, int _wheelsCount) {
