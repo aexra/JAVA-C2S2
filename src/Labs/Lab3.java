@@ -85,28 +85,19 @@ public class Lab3 extends Lab {
     @ILabTask(description = "упорядочить по возрастанию элементы каждой строки матрицы 3x3. Вывести матрицу на экран до сортировки и после")
     public void t3() {
         Random rnd = new Random();
-        int [][] array = new int[3][3];
+        int[][] array = new int[3][3];
+
         for (int r = 0; r < array.length; r++) {
             for (int c = 0; c < array.length; c++) {
                 array[r][c] = rnd.nextInt(20);
             }
         }
-        System.out.printf("Неупорядоченный массив%n%s%n", Arrays.deepToString(array));
-        // Сортировка пузырьком
-        int temp;
-        for (int r = 0; r < array.length; r++) {
-            int n = array[r].length;
-            for (int i = 0; i < n - 1; i++) {
-                for (int j = 0; j < n - i - 1; j++) {
-                    if (array[r][j] > array[r][j+1]) {
-                        temp = array[r][j];
-                        array[r][j] = array[r][j+1];
-                        array[r][j+1] = temp;
-                    }
-                }
-            }
-        }
-        System.out.printf("Упорядоченный массив%n%s", Arrays.deepToString(array));
+
+        log("Неупорядоченный массив: " + Arrays.deepToString(array));
+
+        for (var subary : array) { Arrays.sort(subary); }
+        
+        log("Упорядоченный массив: " + Arrays.deepToString(array));
     }
 
     @ILabTask(description = "ЫЫЫ")
