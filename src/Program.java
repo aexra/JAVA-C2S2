@@ -4,6 +4,6 @@ import static Helpers.LabExecutors.*;
 public class Program {
     public static void main(String[] args) throws Exception {
         cls();
-        exec(3, 4);
+        exec(3, 6);
     }
 }

@@ -96,7 +96,7 @@ public class Lab3 extends Lab {
         log("Неупорядоченный массив: " + Arrays.deepToString(array));
 
         for (var subary : array) { Arrays.sort(subary); }
-        
+
         log("Упорядоченный массив: " + Arrays.deepToString(array));
     }
 
@@ -122,8 +122,9 @@ public class Lab3 extends Lab {
         double MathCadSolve = 1.4682818284590449;
         double[][] steps = LeftRect.CreateSteps(0, 1, 101);
         double answer = LeftRect.Integrate(steps[0], steps[1]);
-        System.out.println("Интеграл через метод левых прямоугольников: " + answer);
-        System.out.println("Разница с Маткадом: +-" + Math.abs(answer - MathCadSolve));
+        log("", "");
+        log("Интеграл через метод левых прямоугольников: " + answer);
+        log("Разница с Маткадом: +-" + Math.abs(answer - MathCadSolve));
     }
 
     @ILabTask

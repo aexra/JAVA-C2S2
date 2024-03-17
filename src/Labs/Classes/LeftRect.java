@@ -1,5 +1,7 @@
 package Labs.Classes;
 
+import static Helpers.Logger.error;
+
 public class LeftRect {
     public static double[][] CreateSteps(double start, double end, int steps_num) {
         double[] x = new double[steps_num];
@@ -16,7 +18,7 @@ public class LeftRect {
 
     private static void PrintXY(int size, int steps_num, double[] x, double[] y) {
         if(size >= steps_num) {
-            System.out.println("Неверное число шагов для вывода");
+            error("Неверное число шагов для вывода");
             return;
         }
         System.out.printf("%-22s| %-22s%n", "X", "Y(X) = e^x - x^3");
