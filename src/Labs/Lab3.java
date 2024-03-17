@@ -137,7 +137,7 @@ public class Lab3 extends Lab {
 
     @ILabTask
     public void t8() {
-        int size = inputInt("Введите число коэффициентов");
+        int size = inputInt("Введите число коэффициентов: ");
         int alloc_size = (size > 1) ? size : size + 1;
         int[] coefs = new int[alloc_size];
         if (size == 1) coefs[1] = 0;
@@ -156,7 +156,8 @@ public class Lab3 extends Lab {
         }
         stdPoly += " = " + poly;
         valPoly += " = " + poly;
-        log(stdPoly + "\n" + valPoly);
+        log(stdPoly);
+        log(valPoly);
     }
 
     @ILabTask
