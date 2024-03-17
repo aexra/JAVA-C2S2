@@ -1,6 +1,6 @@
 package Labs;
 
-import static Helpers.Logger.log;
+import static Helpers.Logger.*;
 import static Helpers.Arrays.*;
 import static Helpers.InputHelper.*;
 
@@ -156,7 +156,7 @@ public class Lab3 extends Lab {
         }
         stdPoly += " = " + poly;
         valPoly += " = " + poly;
-        System.out.println(stdPoly + "\n" + valPoly);
+        log(stdPoly + "\n" + valPoly);
     }
 
     @ILabTask
@@ -166,20 +166,20 @@ public class Lab3 extends Lab {
         Regex ro = new Regex("Ростов-на-Дону", "([2-3][- ]?)([0-9]{2}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
         Regex[] regs = {ru, ro};
 
-        System.out.print("Введите строку: ");
+        log("Введите строку: ");
         Scanner scan = new Scanner(System.in);
         String line = scan.nextLine();
 
         if (Boolean.parseBoolean(fmstr)) {
             for (Regex re : regs) {
-                if (re.MatchLine(line)) System.out.println(re.GetLabel() + ": Корректный номер");
-                else System.out.println(re.GetLabel() + ": Некорректный номер");
+                if (re.MatchLine(line)) log(re.GetLabel() + ": Корректный номер");
+                else log(re.GetLabel() + ": Некорректный номер");
             }
         }
         else {
             for (Regex re : regs) {
-                if (re.InLine(line)) System.out.println(re.GetLabel() + ": Содержится в строке");
-                else System.out.println(re.GetLabel() + ": Не содержится в строке");
+                if (re.InLine(line)) log(re.GetLabel() + ": Содержится в строке");
+                else log(re.GetLabel() + ": Не содержится в строке");
             }
         }
         scan.close();
@@ -191,7 +191,7 @@ public class Lab3 extends Lab {
                 "((\\+7)|8)(([- ]?[0-9]{3}[- ]?)|([(][0-9]{3}[)]))([0-9]{3}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
         Regex ro = new Regex("Ростов-на-Дону", "([2-3][- ]?)([0-9]{2}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
 
-        System.out.print("Введите строку: ");
+        log("Введите строку: ");
         Scanner scan = new Scanner(System.in);
         // String line = scan.nextLine();
         String line = "Мои номера 220-30-40 и 8904-378-16-61 не считая служебных";
@@ -201,13 +201,13 @@ public class Lab3 extends Lab {
         nums.addAll(ro.ExtractNums(line));
 
         if(nums.size() == 0) System.out.println("В строке не найдено номеров");
-        else System.out.println("Найденные номера: " + nums.toString());
+        else log("Найденные номера: " + nums.toString());
         scan.close();
     }
 
     private static int ConvertTo(int dec, int base) {
         if (dec < 0) {
-            System.out.println("Число должно быть больше или равно 0");
+            warning("Число должно быть больше или равно 0");
             return -1;
         }
         if(dec == 0) return 0;

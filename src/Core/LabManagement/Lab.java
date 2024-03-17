@@ -70,8 +70,8 @@ public abstract class Lab {
         }
 
         // Вывод сообщения [INFO   ] Задание №... и описания задания если таковое есть
-        log("Задание №" + m.getName().substring(1), "[INFO\t] ");
-        log("Описание: " + m.getAnnotation(ILabTask.class).description() + "\n", "[INFO\t] ");
+        log("Задание №" + m.getName().substring(1), "[INF\t] ");
+        log("Описание: " + m.getAnnotation(ILabTask.class).description() + "\n", "[INF\t] ");
 
         // Вызов метода задания
         try {
