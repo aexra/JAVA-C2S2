@@ -17,17 +17,6 @@ public class Lab4 extends Lab {
         dropcarInfo(car);
     }
 
-    @ILabTask(description = "")
-    public void t2() {
-        log("Классы написал, см. код");
-    }
-
-    @ILabTask(description = "")
-    public void t3() {
-        log("Классы написал, см. код");
-    }
-
-
     private void dropcarInfo(Car car)
     {
         log(car.getSign());
