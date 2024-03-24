@@ -4,7 +4,7 @@ import java.text.MessageFormat;
 
 import Labs.Enums.CarType;
 
-public class Car {
+public class OldCar {
     private String sign;
     private String mark;
     private CarType type;
@@ -45,14 +45,14 @@ public class Car {
         return this.engine;
     }
 
-    public Car(String _mark, CarType _type, String _color, Engine _engine, int _wheelsCount) {
+    public OldCar(String _mark, CarType _type, String _color, Engine _engine, int _wheelsCount) {
         this.mark = _mark;
         this.type = _type;
         this.color = _color;
         this.engine = _engine;
         this.wheelsCount = _wheelsCount;
     }
-    public Car(String _mark, CarType _type, String _color, Engine _engine, int _wheelsCount, String _sign) {
+    public OldCar(String _mark, CarType _type, String _color, Engine _engine, int _wheelsCount, String _sign) {
         this.mark = _mark;
         this.type = _type;
         this.color = _color;

@@ -2,7 +2,7 @@ package Labs;
 
 import Core.Interfaces.ILabTask;
 import Core.LabManagement.Lab;
-import Labs.Classes.Car;
+import Labs.Classes.OldCar;
 import Labs.Classes.CarFactory;
 import Labs.Classes.Engine;
 import Labs.Enums.CarType;
