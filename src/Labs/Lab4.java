@@ -9,12 +9,20 @@ import Labs.Enums.CarType;
 import static Helpers.Logger.*;
 
 public class Lab4 extends Lab {
+
     @ILabTask(description = "Реализация и использование класса машины")
     public void t1() {
         var car = CarFactory.tryCreate("Fasha", CarType.TANK, "Green", 1200, 18);
         car.trySetSign("A123BC161RUS");
         dropcarInfo(car);
     }
+
+    @ILabTask(description = "")
+    public void t2() {
+        
+    }
+
+
 
 
     private void dropcarInfo(Car car)
