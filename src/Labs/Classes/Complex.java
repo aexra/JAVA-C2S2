@@ -131,13 +131,13 @@ public class Complex {
         return this;
     }
     // -=
-    public Complex remove(Complex _right) {
+    public Complex subtract(Complex _right) {
         var z = Complex.subtract(this, _right);
         this.real = z.getReal();
         this.imagine = z.getImagine();
         return this;
     }
-    public Complex remove(double _right) {
+    public Complex subtract(double _right) {
         var z = Complex.subtract(this, _right);
         this.real = z.getReal();
         this.imagine = z.getImagine();
@@ -168,6 +168,59 @@ public class Complex {
         this.real = z.getReal();
         this.imagine = z.getImagine();
         return this;
+    }
+
+    // ELEMENTARY FUNCTIONS METHODS
+    public static Complex exp(Complex z) {
+        return new Complex(
+            Math.exp(z.getReal()) * Math.cos(z.getImagine()),
+            Math.exp(z.getReal()) * Math.sin(z.getImagine())
+        );
+    }
+    public static Complex sin(Complex z) {
+        return new Complex(
+            Math.sin(z.getReal()) * Math.cosh(z.getImagine()),
+            Math.cos(z.getReal()) * Math.sinh(z.getImagine())
+        );
+    }
+    public static Complex cos(Complex z) {
+        return new Complex(
+            Math.cos(z.getReal()) * Math.cosh(z.getImagine()),
+            -Math.sin(z.getReal()) * Math.sinh(z.getImagine())
+        );
+    }
+    public static Complex tan(Complex z) {
+        return sin(z).divide(cos(z));
+    }
+    public static Complex atan(Complex z) {
+        Complex quotient = (new Complex(1, 0).subtract(new Complex(0, 1).multiply(z))).divide(new Complex(1, 0).add(new Complex(0, 1).multiply(z)));
+        return new Complex(0, -0.5).multiply(
+            log(new Complex(1, 0).subtract(quotient)).subtract(log(new Complex(1, 0).add(quotient)))
+        );
+    }
+    public static Complex sinh(Complex z) {
+        return new Complex(
+            Math.sinh(z.getReal()) * Math.sin(z.getImagine()),
+            Math.cosh(z.getReal()) * Math.cos(z.getImagine())
+        );
+    }
+    public static Complex cosh(Complex z) {
+        return new Complex(
+            Math.cosh(z.getReal()) * Math.cos(z.getImagine()),
+            Math.sinh(z.getReal()) * Math.sin(z.getImagine())
+        );
+    }
+    public static Complex tanh(Complex z) {
+        return sinh(z).divide(cosh(z));
+    }
+    public static Complex coth(Complex z) {
+        return (new Complex(1, 0).add(new Complex(0, 1).multiply(z))).divide(new Complex(1, 0).subtract(new Complex(0, 1).multiply(z)));
+    }
+    public static Complex log(Complex z) {
+        return new Complex(
+            Math.log(z.getModule()),
+            z.getArg()
+        );
     }
 
     // OTHER METHODS
