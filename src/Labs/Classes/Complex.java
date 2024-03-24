@@ -222,6 +222,36 @@ public class Complex {
             z.getArg()
         );
     }
+    public Complex exp() {
+        return Complex.exp(this);
+    }
+    public Complex sin() {
+        return Complex.sin(this);
+    }
+    public Complex cos() {
+        return Complex.cos(this);
+    }
+    public Complex tan() {
+        return Complex.tan(this);
+    }
+    public Complex atan() {
+        return Complex.atan(this);
+    }
+    public Complex sinh() {
+        return Complex.sinh(this);
+    }
+    public Complex cosh() {
+        return Complex.cosh(this);
+    }
+    public Complex tanh() {
+        return Complex.tanh(this);
+    }
+    public Complex coth() {
+        return Complex.coth(this);
+    }
+    public Complex log() {
+        return Complex.log(this);
+    }
 
     // OTHER METHODS
     public String toString() {
