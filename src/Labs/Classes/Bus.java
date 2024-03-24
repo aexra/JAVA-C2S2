@@ -1,6 +1,6 @@
 package Labs.Classes;
 
-public class Bus extends Car {
+public final class Bus extends Car {
     public Bus(String _mark, String _color, Engine _engine, int _wheelsCount) {
         super(_mark, _color, _engine, _wheelsCount);
     }
