@@ -10,6 +10,8 @@ public abstract class Car {
     public String signFormat;
     public String color;
 
+    public AutobazaCarState bazaCarState = AutobazaCarState.Idle;
+
     private void setSign(String value) {
         this.sign = value;
     }
