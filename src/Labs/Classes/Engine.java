@@ -1,11 +1,21 @@
 package Labs.Classes;
 
+import java.text.MessageFormat;
+
 public class Engine {
     private String number;
     private int power;
     private int volume;
     private int consumption;
     private int cylinders;
+
+    public Engine(String _number, int _power, int _volume, int _consumption, int _cylinders) {
+        this.number = _number;
+        this.power = _power;
+        this.volume = _volume;
+        this.consumption = _consumption;
+        this.cylinders = _cylinders;
+    }
 
     public String getNumber() {
         return this.number;
@@ -45,5 +55,9 @@ public class Engine {
     public int setCylinders(int _cylinders) {
         this.cylinders = _cylinders;
         return this.cylinders;
+    }
+
+    public String toString() {
+        return MessageFormat.format("Серийный номер: {0}\nМощность: {1}\nРабочий объем: {2}\nПотребление: {3}\nЧисло цилиндров: {4}", number, power, volume, consumption, cylinders);
     }
 }

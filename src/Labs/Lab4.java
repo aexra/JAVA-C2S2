@@ -4,6 +4,7 @@ import Core.Interfaces.ILabTask;
 import Core.LabManagement.Lab;
 import Labs.Classes.Car;
 import Labs.Classes.CarFactory;
+import Labs.Classes.Engine;
 import Labs.Enums.CarType;
 
 import static Helpers.Logger.*;
@@ -12,18 +13,8 @@ public class Lab4 extends Lab {
 
     @ILabTask(description = "Реализация и использование класса машины")
     public void t1() {
-        var car = CarFactory.tryCreate("Fasha", CarType.TANK, "Green", 1200, 18);
+        var car = CarFactory.tryCreate("Fasha", CarType.TANK, "Зеленый", new Engine("89167345267345895781463195834670", 1800, 9570, 50000, 40), 18);
         car.trySetSign("A123BC161RUS");
-        dropcarInfo(car);
-    }
-
-    private void dropcarInfo(Car car)
-    {
-        log(car.getSign());
-        log(car.getMark());
-        log(car.getType());
-        log(car.color);
-        log(car.power);
-        log(car.getWheelsCount());
+        log(car, "");
     }
 }

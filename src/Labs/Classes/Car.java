@@ -1,14 +1,16 @@
 package Labs.Classes;
 
+import java.text.MessageFormat;
+
 import Labs.Enums.CarType;
 
 public class Car {
     private String sign;
     private String mark;
     private CarType type;
-    public String color;
-    public int power;
+    private Engine engine;
     private int wheelsCount;
+    public String color;
 
     private void setSign(String value) {
         this.sign = value;
@@ -35,19 +37,31 @@ public class Car {
         return this.wheelsCount;
     }
 
-    public Car(String _mark, CarType _type, String _color, int _power, int _wheelsCount) {
+    public Engine getEngine() {
+        return this.engine;
+    }
+    public Engine setEngine(Engine _engine) {
+        this.engine = _engine;
+        return this.engine;
+    }
+
+    public Car(String _mark, CarType _type, String _color, Engine _engine, int _wheelsCount) {
         this.mark = _mark;
         this.type = _type;
         this.color = _color;
-        this.power = _power;
+        this.engine = _engine;
         this.wheelsCount = _wheelsCount;
     }
-    public Car(String _mark, CarType _type, String _color, int _power, int _wheelsCount, String _sign) {
+    public Car(String _mark, CarType _type, String _color, Engine _engine, int _wheelsCount, String _sign) {
         this.mark = _mark;
         this.type = _type;
         this.color = _color;
-        this.power = _power;
+        this.engine = _engine;
         this.wheelsCount = _wheelsCount;
         this.trySetSign(_sign);
+    }
+
+    public String toString() {
+        return MessageFormat.format("Знак: {0}\nМарка: {1}\nТип: {2}\nЦвет: {3}\nДвигатель:\n{4}\nКоличество колес: {5}", sign, mark, type.toString(), color, engine.toString(), wheelsCount);
     }
 }
