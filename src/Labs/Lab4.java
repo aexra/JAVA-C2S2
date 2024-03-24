@@ -24,6 +24,6 @@ public class Lab4 extends Lab {
     public void t6() {
         var light = new LightCar("Johnson", "Red", null, 1);
         var cargo = new Cargo("Chipi Chipi", "Lazure Sky", null, 56);
-        log(light);
+        log(light, "");
     }
 }

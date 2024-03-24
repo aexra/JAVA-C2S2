@@ -55,6 +55,6 @@ public abstract class Car {
     }
 
     public String toString() {
-        return MessageFormat.format("Знак: {0}\nМарка: {1}\nЦвет: {2}\nДвигатель:\n{3}\nКоличество колес: {4}", sign, mark, color, engine.toString(), wheelsCount);
+        return MessageFormat.format("Знак: {0}\nМарка: {1}\nЦвет: {2}\nДвигатель:\n{3}\nКоличество колес: {4}", sign, mark, color, (engine != null? engine.toString() : "отсутствует"), wheelsCount);
     }
 }
