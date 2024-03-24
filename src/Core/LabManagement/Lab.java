@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 import Core.Interfaces.ILabTask;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public abstract class Lab {
@@ -82,7 +83,11 @@ public abstract class Lab {
         }
         catch (Exception ex) {
             error("Метод задания <" + itask + "> не может быть вызван");
-            error(ex);
+            if (ex instanceof InvocationTargetException) {
+                error(((InvocationTargetException)ex).getTargetException().getMessage());
+            } else {
+                error(ex);
+            }
         }
 
         // Вывод пустой строки между заданиями
