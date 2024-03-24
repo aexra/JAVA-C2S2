@@ -14,7 +14,7 @@ public class Lab4 extends Lab {
     public void t1() {
         var car = CarFactory.tryCreate("Fasha", CarType.TANK, "Green", 1200, 18);
         car.trySetSign("A123BC161RUS");
-        dropcarInfo(car); // a
+        dropcarInfo(car);
     }
 
     private void dropcarInfo(Car car)
