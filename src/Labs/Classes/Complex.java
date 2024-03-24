@@ -259,6 +259,6 @@ public class Complex {
     }
     public String toString(boolean T) {
         if (!T) return this.toString();
-        else return MessageFormat.format("{0}*(cos({1})+i*sin({1}))", getModule(), getArg());
+        return MessageFormat.format("{0}*(cos({1})+i*sin({1}))", getModule(), getArg());
     }
 }

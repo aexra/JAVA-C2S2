@@ -19,10 +19,10 @@ public class Lab4 extends Lab {
 
     @ILabTask(description = "")
     public void t2() {
-        
+        log("Классы написал, см. код");
     }
 
-
+    
 
 
     private void dropcarInfo(Car car)
