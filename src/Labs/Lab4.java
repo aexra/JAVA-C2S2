@@ -17,8 +17,6 @@ public class Lab4 extends Lab {
         dropcarInfo(car);
     }
 
-    // comm
-
     private void dropcarInfo(Car car)
     {
         log(car.getSign());
