@@ -28,6 +28,9 @@ public class Car {
     public String getMark() {
         return this.mark;
     }
+    public String getType() {
+        return this.type.toString();
+    }
     public int getWheelsCount() {
         return this.wheelsCount;
     }
