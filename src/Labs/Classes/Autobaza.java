@@ -5,6 +5,6 @@ public final class Autobaza {
 
     public Autobaza(int size) throws Exception {
         if (size < 1) throw new Exception("Autobaza must be at least size 1");
-        
+        cars = new Car[size];
     }
 }
