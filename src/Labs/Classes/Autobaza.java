@@ -43,13 +43,15 @@ public final class Autobaza {
         return false;
     }
 
-    public String toStringInState(AutobazaCarState state) {
+    private String toStringInState(AutobazaCarState state) {
+        if (state == null) return "Ошибка: неверное состояние";
         var s = "Автомобили в " + (state == AutobazaCarState.Idle ? "ожидании" : state == AutobazaCarState.Running ? "рейсе" : "ремонте");
         var found = false;
         var i = 1;
         for (var car : cars) {
+            if (car == null) continue;
             if (car.bazaCarState == state) {
-                s += MessageFormat.format("\n{0}. {1}: {2}", i, car.typeName, car.getSign());
+                s += MessageFormat.format("\n{0}. {1}: {2}", i, car.getSign(), car.getTypeName());
                 found = true;
                 i++;
             }
@@ -58,5 +60,15 @@ public final class Autobaza {
             s += "\nАвтомобилей не найдено.";
         }
         return s;
+    }
+
+    public String getIdleCarsListString() {
+        return toStringInState(AutobazaCarState.Idle);
+    }
+    public String getRunningCarsListString() {
+        return toStringInState(AutobazaCarState.Running);
+    }
+    public String getRepairingCarsListString() {
+        return toStringInState(AutobazaCarState.Repairing);
     }
 }

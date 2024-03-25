@@ -3,6 +3,7 @@ package Labs;
 import Core.Interfaces.ILabTask;
 import Core.LabManagement.Lab;
 import Labs.Classes.OldCar;
+import Labs.Classes.Autobaza;
 import Labs.Classes.CarFactory;
 import Labs.Classes.Cargo;
 import Labs.Classes.Engine;
@@ -25,5 +26,17 @@ public class Lab4 extends Lab {
         var light = new LightCar("Johnson", "Red", null, 1);
         var cargo = new Cargo("Chipi Chipi", "Lazure Sky", null, 56);
         log(light, "");
+    }
+
+    @ILabTask(description = "Автобаза")
+    public void t7() throws Exception {
+        var light = new LightCar("Johnson", "Red", null, 1); light.trySetSign("H224AO61RUS");
+        var cargo = new Cargo("Chipi Chipi", "Lazure Sky", null, 56); cargo.trySetSign("X666XX000RUS");
+        
+        var baza = new Autobaza(4);
+        baza.tryAddCar(light);
+        baza.tryAddCar(cargo);
+
+        log(baza.getIdleCarsListString(), "");
     }
 }

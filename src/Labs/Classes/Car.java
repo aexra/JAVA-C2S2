@@ -2,13 +2,15 @@ package Labs.Classes;
 
 import java.text.MessageFormat;
 
+import Labs.Enums.CarType;
+
 public abstract class Car {
     protected String sign;
     protected String mark;
     protected Engine engine;
     protected int wheelsCount;
     protected String typeName = "default";
-    public String signFormat;
+    public String signFormat = CarType.LIGHT.signFormat;
     public String color;
 
     public AutobazaCarState bazaCarState = AutobazaCarState.Idle;
@@ -55,6 +57,10 @@ public abstract class Car {
         this.engine = _engine;
         this.wheelsCount = _wheelsCount;
         this.trySetSign(_sign);
+    }
+
+    public String getTypeName() {
+        return this.typeName;
     }
 
     public String toString() {
