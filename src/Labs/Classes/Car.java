@@ -7,6 +7,7 @@ public abstract class Car {
     protected String mark;
     protected Engine engine;
     protected int wheelsCount;
+    protected String typeName = "default";
     public String signFormat;
     public String color;
 
