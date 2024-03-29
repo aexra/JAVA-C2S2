@@ -62,6 +62,6 @@ public class OldCar {
     }
 
     public String toString() {
-        return MessageFormat.format("Знак: {0}\nМарка: {1}\nТип: {2}\nЦвет: {3}\nДвигатель:\n{4}\nКоличество колес: {5}", sign, mark, type.toString(), color, engine.toString(), wheelsCount);
+        return MessageFormat.format("Знак: {0}\nМарка: {1}\nТип: {2}\nЦвет: {3}\nДвигатель:\n{4}\nКоличество колес: {5}", sign, mark, type.toString(), color, "{\n" + engine.toString() + "\n}", wheelsCount);
     }
 }
