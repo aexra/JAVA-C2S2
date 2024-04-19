@@ -3,13 +3,17 @@ package Labs.Data5.Classes;
 import java.util.LinkedList;
 
 public class Bag {
-    final protected Object[] container;
+    protected Object[] container;
 
     public Bag(int size) {
         container = new Object[size];
     }
 
-    final public void push(Object item) {
+    public void push(Object item) {
+        __push__(item);
+    }
+
+    final protected void __push__(Object item) {
         var free = getFreeIndexes();
         if (free.isEmpty()) throw new StackOverflowError("Bag is filled");
 

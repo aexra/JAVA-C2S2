@@ -12,4 +12,8 @@ public class Pair<T, U> {
     public static <K, V> Pair<K, V> make_pair(K _left, V _right) {
         return new Pair<K, V>(_left, _right);
     }
+
+    public String toString() {
+        return "{" + left.toString() + ", " + right.toString() + "}";
+    }
 }

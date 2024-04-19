@@ -19,8 +19,10 @@ public class Lab5 extends Lab {
         log(bag);
     }
 
-    @ILabTask(description = "test")
+    @ILabTask(description = "pairbag test")
     public void t2() {
-
+        var pb = new PairBag(10);
+        pb.push(new Pair<Integer, String>(2, "two"));
+        log(pb);
     }
 }
