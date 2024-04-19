@@ -1,4 +1,4 @@
-package Labs.Classes;
+package Labs.Data5.Classes;
 
 public class Pair<T, U> {
     public T left;
