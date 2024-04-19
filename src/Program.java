@@ -6,6 +6,6 @@ public class Program {
     public static void main(String[] args) throws Exception {
         cls();
         log("\n", "");
-        exec(5);
+        exec(5, 2);
     }
 }
