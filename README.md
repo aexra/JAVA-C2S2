@@ -7,4 +7,4 @@
 [LabManager.java](https://github.com/aexra/JAVA-C2S2/blob/main/src/Core/LabManagement/LabManager.java)<br>
 [Lab.java](https://github.com/aexra/JAVA-C2S2/blob/main/src/Core/LabManagement/Lab.java)<br>
 
-> С определенного момента развитие проекта происходит в ветке IJ ввиду смены IDE на IntelliJ Idea
+> С определенного момента развитие проекта происходит в ветке idea ввиду смены IDE на IntelliJ Idea
