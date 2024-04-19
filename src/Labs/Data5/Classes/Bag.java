@@ -6,7 +6,7 @@ public class Bag {
     protected Object[] container;
 
     public Bag(int size) {
-        container = new Object[size];
+        initContainer(size);
     }
 
     public void push(Object item) {
@@ -23,8 +23,18 @@ public class Bag {
         setItem(push_index, item);
     }
 
+    protected void initContainer(int size) {
+        container = new Object[size];
+    }
+
     protected void setItem(int index, Object value) {
         container[index] = value;
+    }
+
+    protected Object removeItem(int index) {
+        var popped = container[index];
+        container[index] = null;
+        return popped;
     }
 
     final public Object pop() {
@@ -34,10 +44,7 @@ public class Bag {
         var randomIndex = (int) Math.round(Math.random() * (filled.size() - 1));
         var pop_index = filled.get(randomIndex);
 
-        var popped = container[pop_index];
-        container[pop_index] = null;
-
-        return popped;
+        return removeItem(pop_index);
     }
 
     public String toString() {
@@ -72,10 +79,10 @@ public class Bag {
         return list;
     }
 
-    final public int size() {
+    public int size() {
         return getFilledIndexes().size();
     }
-    final public int capacity() {
+    public int capacity() {
         return container.length;
     }
 }

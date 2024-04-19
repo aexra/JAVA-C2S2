@@ -3,6 +3,8 @@ package Labs.Data5.Classes;
 import java.util.LinkedList;
 import java.util.ArrayList;
 
+import static Helpers.Logger.log;
+
 public class GenericPairBag<T, U> extends Bag {
     private ArrayList<Pair<T, U>> container;
 
@@ -10,35 +12,51 @@ public class GenericPairBag<T, U> extends Bag {
         super(size);
     }
 
+    protected void initContainer(int size) {
+        container = new ArrayList<Pair<T, U>>();
+    }
+
     public void push(Pair<T, U> pair) {
-        __push__(pair);
+        container.add(pair);
     }
 
     public void push(T left, U right) {
-        __push__(new Pair<T, U>(left, right));
+        container.add(new Pair<T, U>(left, right));
     }
 
-    protected void setItem(int index, Pair<T, U> value) {
-        container.set(index, value);
+    public int size() {
+        return container.size();
     }
 
-    protected LinkedList<Integer> getFreeIndexes() {
-        var list = new LinkedList<Integer>();
-
-        for (var i = 0; i < container.size(); i++) {
-            if (container.get(i) == null) list.add(i);
-        }
-
-        return list;
+    protected Object removeItem(int index) {
+        var popped = container.get(index);
+        container.remove(index);
+        return popped;
     }
 
     protected LinkedList<Integer> getFilledIndexes() {
         var list = new LinkedList<Integer>();
 
         for (var i = 0; i < container.size(); i++) {
-            if (container.get(i) != null) list.add(i);
+            list.add(i);
         }
 
         return list;
+    }
+
+    public String toString() {
+        var s = "";
+
+        for (var item : container) {
+            if (item != null) s += item.toString();
+            else s += "null";
+            s += ", ";
+        }
+
+        return s;
+    }
+
+    public int capacity() {
+        return container.size();
     }
 }
