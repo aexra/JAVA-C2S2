@@ -20,7 +20,11 @@ public class Bag {
         var randomIndex = (int) Math.round(Math.random() * (free.size() - 1));
         var push_index = free.get(randomIndex);
 
-        container[push_index] = item;
+        setItem(push_index, item);
+    }
+
+    protected void setItem(int index, Object value) {
+        container[index] = value;
     }
 
     final public Object pop() {
